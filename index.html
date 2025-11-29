@@ -4,14 +4,13 @@
     <meta charset="utf-8">
     <title>tsParticles Individual Overlay</title>
     <style>
-        /* Aseguramos que ocupe toda la pantalla (1920x1080) */
+        /* [Estilos CSS omitidos por brevedad, son los mismos] */
         html, body {
             width: 100%;
             height: 100%;
             margin: 0;
             padding: 0;
             overflow: hidden;
-            /* Fondo Negro Sólido */
             background-color: #000000; 
         }
         #tsparticles {
@@ -28,19 +27,16 @@
     <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.12.0/tsparticles.slim.bundle.min.js"></script>
 
     <script>
-        // Configuración adaptada y optimizada
         tsParticles.load({
             id: "tsparticles",
             options: {
                 fpsLimit: 60,
                 fullScreen: { enable: false },
                 background: {
-                    color: {
-                        value: "#000000"
-                    }
+                    color: { value: "#000000" }
                 },
                 interactivity: {
-                    detectsOn: "canvas",
+                    detectsOn: "window", // <-- ¡CAMBIO CLAVE! Detectar en la ventana del navegador
                     events: {
                         onClick: { enable: true, mode: "push" },
                         onHover: { enable: true, mode: "repulse" },
@@ -48,37 +44,26 @@
                     },
                     modes: {
                         push: { particles_nb: 4 },
-                        repulse: { distance: 250, duration: 0.4 } 
+                        repulse: { distance: 250, duration: 0.4 }
                     }
                 },
                 particles: {
-                    color: { value: "#66FFFF" }, // ¡COLOR CIAN BALANCEADO!
+                    color: { value: "#66FFFF" }, 
                     links: {
-                        color: "#66FFFF", // ¡COLOR CIAN BALANCEADO para las líneas!
-                        distance: 100, // ¡DISTANCIA DE ENLACE MÁS CORTA!
+                        color: "#66FFFF",
+                        distance: 100, 
                         enable: true,
                         opacity: 0.4,
                         width: 1
                     },
                     move: {
-                        bounce: false,
-                        direction: "none",
-                        enable: true,
-                        outMode: "out",
-                        random: false,
-                        speed: 2,
-                        straight: false
+                        bounce: false, direction: "none", enable: true, outMode: "out",
+                        random: false, speed: 2, straight: false
                     },
-                    number: {
-                        density: { enable: true, area: 800 },
-                        value: 80 
-                    },
+                    number: { density: { enable: true, area: 800 }, value: 80 },
                     opacity: { value: 0.5 },
                     shape: { type: "circle" },
-                    size: { 
-                        random: true, 
-                        value: { min: 0.5, max: 3 } 
-                    }
+                    size: { random: true, value: { min: 0.5, max: 3 } }
                 },
                 detectRetina: true
             }
