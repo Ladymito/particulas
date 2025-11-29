@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>tsParticles Individual Overlay</title>
     <style>
-        /* [Estilos CSS omitidos por brevedad, son los mismos] */
+        /* [Estilos CSS omitidos, son los mismos] */
         html, body {
             width: 100%;
             height: 100%;
@@ -36,7 +36,7 @@
                     color: { value: "#000000" }
                 },
                 interactivity: {
-                    detectsOn: "window", // <-- ¡CAMBIO CLAVE! Detectar en la ventana del navegador
+                    detectsOn: "window",
                     events: {
                         onClick: { enable: true, mode: "push" },
                         onHover: { enable: true, mode: "repulse" },
@@ -57,13 +57,24 @@
                         width: 1
                     },
                     move: {
-                        bounce: false, direction: "none", enable: true, outMode: "out",
-                        random: false, speed: 2, straight: false
+                        bounce: false,
+                        direction: "none",
+                        enable: true,
+                        outMode: "bounce", // ¡CAMBIO CLAVE! Hace que reboten en los bordes
+                        random: false,
+                        speed: 2,
+                        straight: false
                     },
-                    number: { density: { enable: true, area: 800 }, value: 80 },
+                    number: {
+                        density: { enable: true, area: 800 },
+                        value: 80 
+                    },
                     opacity: { value: 0.5 },
                     shape: { type: "circle" },
-                    size: { random: true, value: { min: 0.5, max: 3 } }
+                    size: { 
+                        random: true, 
+                        value: { min: 0.5, max: 3 } 
+                    }
                 },
                 detectRetina: true
             }
