@@ -2,16 +2,16 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>tsParticles Individual Overlay</title>
+    <title>tsParticles Background Overlay - Auto Size Anim</title>
     <style>
-        /* [Estilos CSS omitidos, son los mismos] */
+        /* [Estilos CSS omitidos por brevedad, son los mismos, FONDO TRANSPARENTE] */
         html, body {
             width: 100%;
             height: 100%;
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: #000000; 
+            background-color: transparent; 
         }
         #tsparticles {
             position: absolute;
@@ -33,25 +33,38 @@
                 fpsLimit: 60,
                 fullScreen: { enable: false },
                 background: {
-                    color: { value: "#000000" }
+                    color: { value: "transparent" }
                 },
                 interactivity: {
-                    detectsOn: "window",
+                    detectsOn: "window", 
                     events: {
-                        onClick: { enable: true, mode: "push" },
-                        onHover: { enable: true, mode: "repulse" },
                         resize: true
                     },
                     modes: {
-                        push: { particles_nb: 4 },
-                        repulse: { distance: 250, duration: 0.4 }
+                        bubble: {
+                            distance: 100,
+                            size: 15,
+                            duration: 2,
+                            opacity: 0.8,
+                            speed: 2,
+                            divs: [
+                                {
+                                    selectors: "#tsparticles",
+                                    enable: true,
+                                    mode: "bubble",
+                                    type: "rectangle",
+                                    start: "max",
+                                    minimumValue: 10
+                                }
+                            ]
+                        }
                     }
                 },
                 particles: {
                     color: { value: "#66FFFF" }, 
                     links: {
                         color: "#66FFFF",
-                        distance: 100, 
+                        distance: 100,
                         enable: true,
                         opacity: 0.4,
                         width: 1
@@ -60,7 +73,7 @@
                         bounce: false,
                         direction: "none",
                         enable: true,
-                        outMode: "bounce", // ¡CAMBIO CLAVE! Hace que reboten en los bordes
+                        outMode: "bounce",
                         random: false,
                         speed: 2,
                         straight: false
@@ -71,9 +84,16 @@
                     },
                     opacity: { value: 0.5 },
                     shape: { type: "circle" },
+                    // 👇 ¡AQUÍ ESTÁ LA NUEVA ANIMACIÓN DE TAMAÑO! 👇
                     size: { 
                         random: true, 
-                        value: { min: 0.5, max: 3 } 
+                        value: { min: 0.5, max: 3 }, // Valores base para el tamaño
+                        anim: {
+                            enable: true, // Habilitar la animación de tamaño
+                            speed: 2,     // Velocidad de la animación (más alto = más rápido)
+                            size_min: 0.5, // Tamaño mínimo al que se reducirá durante la animación
+                            sync: false   // Cada partícula se anima de forma independiente
+                        }
                     }
                 },
                 detectRetina: true
